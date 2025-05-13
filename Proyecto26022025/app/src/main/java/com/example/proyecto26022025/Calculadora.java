@@ -1,24 +1,27 @@
 package com.example.proyecto26022025;
 
-import android.os.Bundle;
+import java.math.BigDecimal;
 
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
-public class Calculadora extends AppCompatActivity {
+public class Calculadora implements ICalculadora{
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_calculadora);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+    public BigDecimal calculate(Operacion operacion, BigDecimal x, BigDecimal y){
+
+        switch (operacion){
+            case SUMA:
+                return x.add(y);
+            case RESTA:
+                return x.subtract(y);
+            case MULT:
+                return x.divide(y);
+            case DIV:
+                return  x.divide(y);
+            case PORC:
+                return BigDecimal.ZERO;
+        }
+
+        return BigDecimal.ZERO;
+
     }
+
 }
