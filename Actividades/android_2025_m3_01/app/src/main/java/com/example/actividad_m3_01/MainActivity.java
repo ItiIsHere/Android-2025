@@ -20,7 +20,6 @@ interface Calculadora {
 }
 
 
-// Implementación de la interfaz
 class CalculadoraBasica implements Calculadora {
     @Override
     public double suma(double a, double b) {

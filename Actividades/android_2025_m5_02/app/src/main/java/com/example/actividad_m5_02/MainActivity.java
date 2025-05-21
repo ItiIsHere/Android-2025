@@ -22,14 +22,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         try {
-            // Leer archivo desde la carpeta raw
+
             InputStream inputStream = getResources().openRawResource(R.raw.input);
             String fileContent = readFileContent(inputStream);
 
-            // Calcular las calorías del elfo con mayor cantidad
             int maxCalories = calculateMaxCalories(fileContent);
 
-            // Imprimir resultado en Logcat
             Log.d(TAG, "El elfo con más calorías lleva: " + maxCalories + " calorías.");
         } catch (IOException e) {
             Log.e(TAG, "Error al leer el archivo: " + e.getMessage());
@@ -63,12 +61,10 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        // Añadir las calorías del último elfo
         if (currentCalories > 0) {
             elfCalories.add(currentCalories);
         }
 
-        // Encontrar el máximo
         int maxCalories = 0;
         for (int calories : elfCalories) {
             if (calories > maxCalories) {
